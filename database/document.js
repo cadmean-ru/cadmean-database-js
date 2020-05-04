@@ -8,17 +8,17 @@ import {objectFromDocument} from "../types/document";
  * @classdesc Class to read and write to documents
  */
 class DocumentRequest {
-    /**
-     * @name DocumentRequest#db
-     * @type Database
-     */
-    db;
-
-    /**
-     * @name DocumentRequest#q
-     * @type Query
-     */
-    q;
+    // /**
+    //  * @name DocumentRequest#db
+    //  * @type Database
+    //  */
+    // db;
+    //
+    // /**
+    //  * @name DocumentRequest#q
+    //  * @type Query
+    //  */
+    // q;
 
     constructor(db, q, docName) {
         this.db = db;
@@ -31,7 +31,7 @@ class DocumentRequest {
      * Throws an error if the document was not found.
      * @return {Promise<*>}
      */
-    find = async () => {
+    async find() {
         this.q.query_type = "find";
         let res = await this.db.sendRequest(this.q);
         if (!res.ok) {
@@ -45,7 +45,7 @@ class DocumentRequest {
      * @param data The data to be written.
      * @return {Promise<void>}
      */
-    update = async (data) => {
+    async update(data) {
         this.q.data = data;
         this.q.query_type = "update";
         let res = await this.db.sendRequest(this.q);
@@ -58,7 +58,7 @@ class DocumentRequest {
      * Deletes a document.
      * @return {Promise<void>}
      */
-    delete = async () => {
+    async delete() {
         this.q.query_type = "delete";
         let res = await this.db.sendRequest(this.q);
         if (!res.ok) {

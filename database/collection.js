@@ -12,17 +12,17 @@ import SortBy from "./sort";
  * @classdesc Class to make requests to a collection
  */
 class CollectionRequest {
-    /**
-     * @name CollectionRequest#db
-     * @type Database
-     */
-    db;
-
-    /**
-     * @name CollectionRequest#q
-     * @type Query
-     */
-    q;
+    // /**
+    //  * @name CollectionRequest#db
+    //  * @type Database
+    //  */
+    // db;
+    //
+    // /**
+    //  * @name CollectionRequest#q
+    //  * @type Query
+    //  */
+    // q;
 
     constructor(db, collectionName) {
         this.db = db;
@@ -35,7 +35,7 @@ class CollectionRequest {
      * Throws an error if no documents were found.
      * @return {Promise<[]>} The documents
      */
-    findDocs = async () => {
+    async findDocs () {
         this.q.query_type = "find";
         let res = await this.db.sendRequest(this.q);
         if (!res.ok) {
@@ -54,7 +54,7 @@ class CollectionRequest {
      * @param {*} data The data to be updated
      * @return {Promise<void>}
      */
-    updateDocs = async (data) => {
+    async updateDocs (data) {
         this.q.data = data;
         this.q.query_type = "update";
         let res = await this.db.sendRequest(this.q);
@@ -68,7 +68,7 @@ class CollectionRequest {
      * If no filters are specified for the query counts all documents in the collection.
      * @return {Promise<number>}
      */
-    countDocs = async () => {
+    async countDocs () {
         this.q.query_type = "count";
         let res = await this.db.sendRequest(this.q);
         if (!res.ok) {
@@ -82,7 +82,7 @@ class CollectionRequest {
      * If no filters are specified for the query deletes the entire collection.
      * @return {Promise<void>}
      */
-    deleteDocs = async () => {
+    async deleteDocs() {
         this.q.query_type = "delete";
         let res = await this.db.sendRequest(this.q);
         if (!res.ok) {
@@ -95,7 +95,7 @@ class CollectionRequest {
      * @param data The data to be added.
      * @return {Promise<string>} ID of the newly created document.
      */
-    createDoc = async (data) => {
+    async createDoc (data) {
         this.q.query_type = "create";
         this.q.data = data;
         let res = await this.db.sendRequest(this.q);
@@ -111,8 +111,12 @@ class CollectionRequest {
      * @param {("=="|"<"|"<="|">"|">="|"like"|"ilike")} operator
      * @param {Object} value
      */
-    filter = (path, operator, value) => {
+    filter(path, operator, value) {
+        if (!this.q.filters) {
+            this.q.filters = [];
+        }
         this.q.filters.push(new Filter(path, operator, value));
+        return this;
     }
 
     /**
@@ -120,16 +124,21 @@ class CollectionRequest {
      * @param {string} path Document field path to sort results by
      * @param {("asc"|"desc")} order
      */
-    sort = (path, order) => {
+    sort(path, order) {
+        if (!this.q.sort) {
+            this.q.sort = [];
+        }
         this.q.sort.push(new SortBy(path, order));
+        return this;
     }
 
     /**
      *
      * @param {number} number The number of documents to limit results to
      */
-    limit = (number) => {
+    limit(number) {
         this.q.limit = number;
+        return this;
     }
 
     /**
@@ -137,7 +146,7 @@ class CollectionRequest {
      * @param docName The name of document
      * @return {DocumentRequest}
      */
-    document = (docName) => {
+    document(docName) {
         return new DocumentRequest(this.db, this.q, docName);
     }
 }

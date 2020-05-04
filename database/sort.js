@@ -4,17 +4,17 @@
  * @class SortBy
  */
 class SortBy {
-    /**
-     * @name SortBy#path
-     * @type string
-     */
-    path;
-
-    /**
-     * @name SortBy#order
-     * @type string
-     */
-    order;
+    // /**
+    //  * @name SortBy#path
+    //  * @type string
+    //  */
+    // path;
+    //
+    // /**
+    //  * @name SortBy#order
+    //  * @type string
+    //  */
+    // order;
 
     /**
      *

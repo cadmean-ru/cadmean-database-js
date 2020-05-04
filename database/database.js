@@ -1,5 +1,6 @@
 import CollectionRequest from "./collection";
 import DatabaseError from "./error";
+import TokensProvider from "../identity/provider";
 
 /**
  * The main class to interact with Cadmean Database.
@@ -8,9 +9,9 @@ import DatabaseError from "./error";
  * @classdesc Class to make requests to Cadmean Database.
  */
 class Database {
-    apiUrl;
-    dbName;
-    tokensProvider;
+    // apiUrl;
+    // dbName;
+    // tokensProvider;
 
     /**
      *
@@ -30,12 +31,12 @@ class Database {
      * @param {string} collectionName The name of collection
      * @return {CollectionRequest}
      */
-    collection = (collectionName) => {
-        return new CollectionRequest(this.apiUrl, this, collectionName);
+    collection(collectionName) {
+        return new CollectionRequest(this, collectionName);
     }
 
 
-    sendRequest = async (q) => {
+    async sendRequest(q) {
         let req = {}
         if (this.tokensProvider.accessToken) {
             req["access_token"] = this.tokensProvider.accessToken;
@@ -44,12 +45,13 @@ class Database {
             throw new DatabaseError(3, "Query is invalid");
         }
         req["query"] = q.prepare();
-        let res = await fetch(`${this.apiUrl}/api/v1`, {
+        let b = JSON.stringify(req);
+        let res = await fetch(`${this.apiUrl}/api/v1/`, {
             method: "Post",
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(req),
+            body: b,
         });
         if (!res.ok) {
             throw new DatabaseError(4, "Connection error");

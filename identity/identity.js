@@ -1,20 +1,22 @@
 class Identity {
-    currentUser;
-    database;
+    // currentUser;
+    // database;
 
     /**
     * @param {string} email User email
     * @param {string} password User password
     * */
-    signIn = async (email, password, validateFunction) => {
+    async signIn(email, password, validateFunction) {
         let res = await fetch("")
     }
 
-    signOut = async () => {
+    async signOut() {
 
     }
 
-    signUpWithEmailAndPassword = async () => {
+    async signUpWithEmailAndPassword() {
 
     }
 }
+
+export default Identity;

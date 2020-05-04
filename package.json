@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/cadmean-ru/cadmeanDatabaseSdkJs/issues"
   },
-  "homepage": "https://github.com/cadmean-ru/cadmeanDatabaseSdkJs#readme"
+  "homepage": "https://github.com/cadmean-ru/cadmeanDatabaseSdkJs#readme",
+  "devDependencies": {
+  },
+  "dependencies": {
+  }
 }

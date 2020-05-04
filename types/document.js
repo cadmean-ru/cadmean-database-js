@@ -1,4 +1,5 @@
 import {resolveValueFromJs, resolveValueFromJson, resolveValueTypeFromJs} from "./types";
+import DatabaseError from "../database/error";
 
 /**
  * Translates JS object to a database document i.e. an array of fields.
@@ -9,7 +10,8 @@ function documentFromObject(obj) {
     let doc = [];
     let i = 0;
     let keys = Object.keys(obj);
-    for (let field of obj) {
+    for (let k of keys) {
+        let field = obj[k];
         let t = resolveValueTypeFromJs(field);
         let v = resolveValueFromJs(t, field);
         let path = keys[i++];
@@ -35,7 +37,7 @@ function objectFromDocument(doc) {
 
     let obj = {};
     for (let f of doc) {
-        let p = doc["path"];
+        let p = f["path"];
         obj[p] = resolveValueFromJson(f);
     }
 

@@ -1,11 +1,12 @@
 class CollectionRequest {
     apiUrl;
+    db;
     q;
 
-    constructor(apiUrl, dbName, collectionName) {
+    constructor(apiUrl, db, collectionName) {
         this.apiUrl = apiUrl;
-        this.q = new Query();
-        this.q.path = `${dbName}/${collectionName}/`;
+        this.db = db;
+        this.q = new Query(`${db.dbName}/${collectionName}/`);
     }
 
     findDocs = async () => {

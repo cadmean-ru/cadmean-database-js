@@ -22,6 +22,6 @@ class Database {
      * @return {CollectionRequest}
      */
     collection = (collectionName) => {
-        return new CollectionRequest(this.apiUrl, this.dbName, collectionName);
+        return new CollectionRequest(this.apiUrl, this, collectionName);
     }
 }

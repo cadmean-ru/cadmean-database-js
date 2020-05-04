@@ -1,3 +1,6 @@
+
+const validOperators = ["<", ">", "<=", ">=", "==", "like", "ilike"];
+
 class Filter {
     path;
     operator;
@@ -13,5 +16,9 @@ class Filter {
         this.path = path;
         this.operator = operator;
         this.value = value;
+    }
+
+    validate() {
+        return this.path && this.value && validOperators.includes(this.operator);
     }
 }

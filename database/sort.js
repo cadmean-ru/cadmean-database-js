@@ -1,5 +1,19 @@
+/**
+ * Class to represent sorting order
+ *
+ * @class SortBy
+ */
 class SortBy {
+    /**
+     * @name SortBy#path
+     * @type string
+     */
     path;
+
+    /**
+     * @name SortBy#order
+     * @type string
+     */
     order;
 
     /**
@@ -12,3 +26,5 @@ class SortBy {
         this.order = order;
     }
 }
+
+export default SortBy

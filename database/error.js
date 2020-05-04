@@ -12,3 +12,5 @@ function DatabaseError(code, text) {
 }
 
 DatabaseError.prototype = Object.create(Error.prototype);
+
+export default DatabaseError

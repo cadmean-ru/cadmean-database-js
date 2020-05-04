@@ -6,7 +6,7 @@ class Identity {
     * @param {string} email User email
     * @param {string} password User password
     * */
-    signIn = async (email, password) => {
+    signIn = async (email, password, validateFunction) => {
         let res = await fetch("")
     }
 

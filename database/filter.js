@@ -22,3 +22,5 @@ class Filter {
         return this.path && this.value && validOperators.includes(this.operator);
     }
 }
+
+export default Filter

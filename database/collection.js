@@ -12,17 +12,6 @@ import SortBy from "./sort";
  * @classdesc Class to make requests to a collection
  */
 class CollectionRequest {
-    // /**
-    //  * @name CollectionRequest#db
-    //  * @type Database
-    //  */
-    // db;
-    //
-    // /**
-    //  * @name CollectionRequest#q
-    //  * @type Query
-    //  */
-    // q;
 
     constructor(db, collectionName) {
         this.db = db;

@@ -9,9 +9,6 @@ import TokensProvider from "../identity/provider";
  * @classdesc Class to make requests to Cadmean Database.
  */
 class Database {
-    // apiUrl;
-    // dbName;
-    // tokensProvider;
 
     /**
      *

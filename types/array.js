@@ -8,6 +8,8 @@ import {resolveValueFromJs, resolveValueFromJson, resolveValueTypeFromJs} from "
 function arrayFromJSArray(arr) {
     let dbArr = [];
     for (let el of arr) {
+        if (!el)
+            continue;
         let t = resolveValueTypeFromJs(el);
         let v = resolveValueFromJs(t, el);
         dbArr.push({

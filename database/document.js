@@ -8,17 +8,6 @@ import {objectFromDocument} from "../types/document";
  * @classdesc Class to read and write to documents
  */
 class DocumentRequest {
-    // /**
-    //  * @name DocumentRequest#db
-    //  * @type Database
-    //  */
-    // db;
-    //
-    // /**
-    //  * @name DocumentRequest#q
-    //  * @type Query
-    //  */
-    // q;
 
     constructor(db, q, docName) {
         this.db = db;

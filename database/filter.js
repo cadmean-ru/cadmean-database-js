@@ -2,9 +2,6 @@
 const validOperators = ["<", ">", "<=", ">=", "==", "like", "ilike"];
 
 class Filter {
-    // path;
-    // operator;
-    // value;
 
     /**
      *

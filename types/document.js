@@ -12,6 +12,8 @@ function documentFromObject(obj) {
     let keys = Object.keys(obj);
     for (let k of keys) {
         let field = obj[k];
+        if (!field)
+            continue;
         let t = resolveValueTypeFromJs(field);
         let v = resolveValueFromJs(t, field);
         let path = keys[i++];

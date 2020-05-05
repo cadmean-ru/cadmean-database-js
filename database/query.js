@@ -9,46 +9,6 @@ const validQueryTypes = ["find", "count", "create", "update", "delete"];
  * @classdesc Cadmean Database query
  */
 class Query {
-    // /**
-    //  * The path to the collection document or field
-    //  * @name Query#path
-    //  * @type string
-    //  */
-    // path;
-    //
-    // /**
-    //  * Array of filters
-    //  * @name Query#filters
-    //  * @type {Filter[]}
-    //  */
-    // filters = [];
-    //
-    // /**
-    //  * @name Query#sort
-    //  * @type {SortBy[]}
-    //  */
-    // sort = [];
-    //
-    // /**
-    //  * The limit of documents in query
-    //  * @name Query#limit
-    //  * @type number
-    //  */
-    // limit;
-    //
-    // /**
-    //  * Specifies type of query i.e. 'find', 'count', 'create', 'update' or 'delete'
-    //  * @name Query#query_type
-    //  * @type string
-    //  */
-    // query_type;
-    //
-    // /**
-    //  * The data sent to database. Required for create and update queries.
-    //  * @name Query#data
-    //  * @type *
-    //  */
-    // data;
 
     constructor(path) {
         this.path = path;

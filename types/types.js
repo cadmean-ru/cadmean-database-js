@@ -1,3 +1,7 @@
+import DatabaseError from "../database/error";
+import {documentFromObject, objectFromDocument} from "./document";
+import {arrayFromJSArray, jsArrayFromArray} from "./array";
+
 /**
  * Translates JSON received from API
  * @param field The data received from API
@@ -46,7 +50,7 @@ function resolveValueFromJson(field) {
             }
         case "DateTime":
             if (typeof field.value === "number") {
-                return new Date(field.value);
+                return new Date(field.value * 1000);
             } else {
                 throw new DatabaseError(1, "Invalid type");
             }
@@ -97,7 +101,7 @@ function resolveValueTypeFromJs(value) {
  * @return The JSON value to be sent to API
  */
 function resolveValueFromJs(valueType, value) {
-    switch (value) {
+    switch (valueType) {
         case "DateTime":
             if (value instanceof Date) {
                 return value.getTime();
